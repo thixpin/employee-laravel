@@ -11,6 +11,8 @@ type Query {
       email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
     ): User @find
 
+    currentUser: User @auth(rules: ["api"]) 
+
     departments: [Department!]!  @paginate(defaultCount: 30)
     department(id: ID! @eq): Department! @find
 
